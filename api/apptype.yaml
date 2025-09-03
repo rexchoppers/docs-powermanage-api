@@ -2,7 +2,8 @@ get:
   summary: "Get App Types"
   description: "Retrieve the app types for Android and iOS platforms."
   tags:
-    - REST
+    - REST:Version
+    - Installer:Version
   responses:
     '200':
       description: Successful response

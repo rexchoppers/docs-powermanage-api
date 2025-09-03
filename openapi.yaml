@@ -42,6 +42,9 @@ tags:
       Endpoints for installer workflows.
       Base: https://visonic.tycomonitor.com/rest_api/installer/{installer_version}
 
+  - name: REST:Versions
+  - name: Installer:Versions
+
 paths:
   /version:
     $ref: './api/version.yaml'

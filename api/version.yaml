@@ -4,8 +4,8 @@ get:
     Returns the supported versions for different API types exposed by the PowerManage platform.
     This endpoint is global and not tied to the REST or Installer namespaces.
   tags:
-    - REST
-    - Installer
+    - REST:Version
+    - Installer:Version
   responses:
     '200':
       description: Supported versions for API families
