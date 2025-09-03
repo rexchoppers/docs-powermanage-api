@@ -29,6 +29,10 @@ info:
 servers: []
 
 tags:
+  - name: PowerManage API
+    description: |
+      General PowerManage server endpoints that are not specific to REST or Installer.
+      Use this section for capability discovery and global metadata.
   - name: REST
     description: |
       Endpoints used by normal end users and apps.
@@ -39,5 +43,9 @@ tags:
       Base: https://visonic.tycomonitor.com/rest_api/installer/{installer_version}
 
 paths:
+  /version:
+    $ref: './api/version.yaml'
   /apptype:
     $ref: './api/apptype.yaml'
+
+

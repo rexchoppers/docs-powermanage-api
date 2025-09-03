@@ -1,0 +1,45 @@
+get:
+  summary: Get supported API versions
+  description: |
+    Returns the supported versions for different API types exposed by the PowerManage platform.
+    This endpoint is global and not tied to the REST or Installer namespaces.
+  tags:
+    - REST
+    - Installer
+  responses:
+    '200':
+      description: Supported versions for API families
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              rest_versions:
+                type: array
+                description: Used for user-based apps like Visonic Go and ConnectAlarm
+                items:
+                  type: string
+                example: ["10.0"]
+              installer_versions:
+                type: array
+                description: Used for installer-based apps like AlarmInstall
+                items:
+                  type: string
+                example: ["8.0"]
+              push_format_versions:
+                type: array
+                description: Push notification payload format versions
+                items:
+                  type: string
+                example: ["7"]
+              dls_versions:
+                type: array
+                description: Downloader/Upload (DLS) protocol versions
+                items:
+                  type: string
+                example: ["1.0"]
+          example:
+            rest_versions: ["10.0"]
+            installer_versions: ["8.0"]
+            push_format_versions: ["7"]
+            dls_versions: ["1.0"]
