@@ -1,0 +1,13 @@
+get:
+  summary: "Get App Types"
+  tags:
+    - REST
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json:
+          example:
+            apptype: ""
+            android: "market://details?id=com.visonic.neo"
+            ios: "itms-apps://itunes.apple.com/app/connectalarm/id1300525077"
