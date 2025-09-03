@@ -1,0 +1,15 @@
+{
+  "name": "docs-powermanage-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@redocly/cli": "^2.0.8",
+    "chokidar": "^4.0.3"
+  }
+}
