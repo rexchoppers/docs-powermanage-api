@@ -1,0 +1,150 @@
+openapi: 3.0.3
+info:
+  title: Sample PowerManage API
+  description: |
+    This is a sample OpenAPI document to demonstrate the docs setup.
+    It defines a couple of endpoints for managing devices.
+  version: 1.0.0
+  contact:
+    name: API Support
+    email: support@example.com
+servers:
+  - url: http://localhost:3000/api
+    description: Local development server
+  - url: https://api.example.com
+    description: Production server
+paths:
+  /devices:
+    get:
+      summary: List devices
+      description: Returns a paginated list of devices.
+      tags: [Devices]
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+          description: Page number to return
+        - in: query
+          name: pageSize
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+          description: Number of items per page
+      responses:
+        '200':
+          description: A list of devices
+          headers:
+            X-Total-Count:
+              description: Total number of devices available
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Device'
+                  page:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  total:
+                    type: integer
+    post:
+      summary: Create device
+      description: Creates a new device.
+      tags: [Devices]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceCreateRequest'
+      responses:
+        '201':
+          description: Device created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        '400':
+          description: Invalid input
+  /devices/{deviceId}:
+    get:
+      summary: Get device by ID
+      tags: [Devices]
+      parameters:
+        - in: path
+          name: deviceId
+          required: true
+          schema:
+            type: string
+          description: The ID of the device
+      responses:
+        '200':
+          description: Device details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        '404':
+          description: Device not found
+    delete:
+      summary: Delete device
+      tags: [Devices]
+      parameters:
+        - in: path
+          name: deviceId
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Deleted successfully
+        '404':
+          description: Device not found
+components:
+  schemas:
+    Device:
+      type: object
+      required: [id, name, status]
+      properties:
+        id:
+          type: string
+          example: dev_12345
+        name:
+          type: string
+          example: UPS Rack 1
+        status:
+          type: string
+          description: Current state of the device
+          enum: [online, offline, maintenance]
+          example: online
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+          description: Arbitrary key/value metadata
+    DeviceCreateRequest:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+          example: New Device
+        status:
+          type: string
+          enum: [online, offline, maintenance]
+          default: offline
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
