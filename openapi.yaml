@@ -54,12 +54,17 @@ tags:
 
   - name: REST:Versions
   - name: Installer:Versions
+  - name: REST:Panel
+    description: |
+      Panel-related REST operations such as creating a panel session (login) using User-Token and returning Session-Token.
 
 paths:
   /version:
     $ref: './api/version.yaml'
   /apptype:
     $ref: './api/apptype.yaml'
+  /panel/login:
+    $ref: './api/rest/login.yaml'
 
 components:
   securitySchemes:

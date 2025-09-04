@@ -1,0 +1,60 @@
+post:
+  summary: Login to a panel session
+  description: |
+    Login and generate a session with a specific panel. Requires a valid `User-Token`.
+    The returned `session_token` must be supplied in the `Session-Token` header for
+    subsequent panel-specific operations.
+  tags:
+    - REST
+    - REST:Panel
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            panel_serial:
+              type: string
+              description: Panel serial number
+              example: AAAAAA
+            user_code:
+              type: string
+              description: User's 4-6 digit code for the panel
+              example: "1111"
+            app_id:
+              type: string
+              description: Application identifier (UUID). See App IDs.
+              example: 2d513ccb-f3ec-4656-b506-f158b6689b1e
+            app_type:
+              type: string
+              description: Application bundle identifier. See App IDs.
+              example: com.visonic.powermaxapp
+          required:
+            - panel_serial
+            - user_code
+            - app_id
+            - app_type
+        example:
+          panel_serial: "AAAAAA"
+          user_code: "1111"
+          app_id: "2d513ccb-f3ec-4656-b506-f158b6689b1e"
+          app_type: "com.visonic.powermaxapp"
+  responses:
+    '200':
+      description: Session created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              session_token:
+                type: string
+                description: Session token to be used in the `Session-Token` header for panel operations
+                example: c79205bc-6168-47eb-aaa9-b430e4cfd456
+          example:
+            session_token: "c79205bc-6168-47eb-aaa9-b430e4cfd456"
+    '401':
+      description: Unauthorized (invalid or missing User-Token, or invalid credentials)
+  security:
+    - UserToken: []
