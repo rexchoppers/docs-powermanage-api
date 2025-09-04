@@ -83,6 +83,8 @@ paths:
     $ref: './api/rest/10.0/panel-info.yaml'
   /10.0/panels:
     $ref: './api/rest/10.0/panels.yaml'
+  /10.0/status:
+    $ref: './api/rest/10.0/status.yaml'
 
 components:
   securitySchemes:

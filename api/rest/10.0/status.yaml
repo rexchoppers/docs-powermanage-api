@@ -1,0 +1,89 @@
+get:
+  summary: Get basic panel status
+  description: |
+    Returns basic panel information such as BBA connected status, discovery status,
+    partition status, and overall panel status.
+  tags:
+    - REST:10.0:Panel
+  parameters:
+    - $ref: '../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../openapi.yaml#/components/parameters/SessionTokenHeader'
+  responses:
+    '200':
+      description: Basic panel status information
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              connected:
+                type: boolean
+              connected_status:
+                type: object
+                properties:
+                  bba:
+                    type: object
+                    properties:
+                      is_connected:
+                        type: boolean
+                      state:
+                        type: string
+              discovery:
+                type: object
+                properties:
+                  completed:
+                    type: boolean
+                  stages:
+                    type: integer
+                  in_queue:
+                    type: integer
+                  triggered:
+                    nullable: true
+              partitions:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    state:
+                      type: string
+                    status:
+                      type: string
+                    ready:
+                      type: boolean
+                    options:
+                      type: array
+                      items:
+                        type: string
+              rssi:
+                type: object
+                properties:
+                  level:
+                    type: string
+                  network:
+                    type: string
+          example:
+            connected: false
+            connected_status:
+              bba:
+                is_connected: false
+                state: online
+            discovery:
+              completed: true
+              stages: 11
+              in_queue: 0
+              triggered: null
+            partitions:
+              - id: -1
+                state: DISARM
+                status: ""
+                ready: true
+                options: []
+            rssi:
+              level: ""
+              network: ""
+    '401':
+      description: Unauthorized — missing or invalid User-Token or Session-Token
+    '403':
+      description: Forbidden — authenticated but not allowed to access this panel
