@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon --watch openapi.yaml --watch api/ --ext yaml,yml dev.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "@redocly/cli": "^2.0.8",
-    "chokidar": "^4.0.3"
+    "nodemon": "^3.1.10"
   }
 }
