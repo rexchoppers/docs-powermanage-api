@@ -26,7 +26,17 @@ info:
     ## Installer
     The Installer interface is used by professional installers and installer apps.
     - Base endpoint: `https://visonic.tycomonitor.com/rest_api/installer/{installer_version}`
+
+    ## Authentication
+    There are two tokens passed as HTTP headers:
+    - `User-Token`: Used to authenticate the user with the server.
+    - `Session-Token`: Used alongside `User-Token` for operations on a specific panel.
+
+    Reusable security schemes are defined for both headers. Most endpoints require `User-Token`. Panel-specific operations typically require both `User-Token` and `Session-Token`.
 servers: []
+
+security:
+  - UserToken: []
 
 tags:
   - name: PowerManage API
@@ -50,5 +60,18 @@ paths:
     $ref: './api/version.yaml'
   /apptype:
     $ref: './api/apptype.yaml'
+
+components:
+  securitySchemes:
+    UserToken:
+      type: apiKey
+      in: header
+      name: User-Token
+      description: User authentication token.
+    SessionToken:
+      type: apiKey
+      in: header
+      name: Session-Token
+      description: Panel-specific session token used alongside User-Token for panel operations.
 
 
