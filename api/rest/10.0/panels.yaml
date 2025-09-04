@@ -1,0 +1,110 @@
+get:
+  summary: List user's panels
+  description: |
+    Returns a list of panels that are associated with the authenticated user.
+  tags:
+    - REST:10.0:Panel
+  parameters:
+    - $ref: '../../../openapi.yaml#/components/parameters/UserTokenHeader'
+  responses:
+    '200':
+      description: A list of panels linked to the user
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                panel_serial:
+                  type: string
+                  description: Panel serial number
+                  example: AAAAAA
+                alias:
+                  type: string
+                  description: User-defined alias for the panel
+                  example: Home
+                role:
+                  type: string
+                  description: The user's role on this panel
+                  example: MASTER_USER
+                customization:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    name:
+                      type: string
+                      example: Default
+                    is_default:
+                      type: boolean
+                      example: true
+                    created:
+                      type: integer
+                      example: 0
+                    changed:
+                      type: integer
+                      example: 1689192872
+                    data:
+                      type: object
+                      properties:
+                        apptype:
+                          type: string
+                          example: ""
+                        android:
+                          type: string
+                          example: "market://details?id=com.visonic.neo"
+                        ios:
+                          type: string
+                          example: "itms-apps://itunes.apple.com/app/connectalarm/id1300525077"
+                        customization:
+                          type: object
+                          properties:
+                            themes:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  name:
+                                    type: string
+                                  brightness:
+                                    type: string
+                                    enum: [light, dark]
+                                  colors:
+                                    type: object
+                                    properties:
+                                      primary:
+                                        type: string
+                                      gradient:
+                                        type: array
+                                        items:
+                                          type: string
+          example:
+            - panel_serial: "AAAAAA"
+              alias: "Home"
+              role: "MASTER_USER"
+              customization:
+                id: 1
+                name: "Default"
+                is_default: true
+                created: 0
+                changed: 1689192872
+                data:
+                  apptype: ""
+                  android: "market://details?id=com.visonic.neo"
+                  ios: "itms-apps://itunes.apple.com/app/connectalarm/id1300525077"
+                  customization:
+                    themes:
+                      - name: "Estoril"
+                        brightness: "light"
+                        colors:
+                          primary: "#006AFF"
+                          gradient: ["#00539E", "#21329D", "#2A2A9D"]
+                      - name: "Azurite"
+                        brightness: "dark"
+                        colors:
+                          primary: "#00A3FF"
+                          gradient: ["#1A2B3B", "#222133", "#261D2D"]
+    '401':
+      description: Unauthorized — missing or invalid User-Token

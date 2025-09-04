@@ -81,6 +81,8 @@ paths:
     $ref: './api/rest/10.0/auth.yaml'
   /10.0/panel_info:
     $ref: './api/rest/10.0/panel-info.yaml'
+  /10.0/panels:
+    $ref: './api/rest/10.0/panels.yaml'
 
 components:
   securitySchemes:
