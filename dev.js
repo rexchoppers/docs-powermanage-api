@@ -6,9 +6,8 @@ const fs = require('fs');
 const path = require('path');
 
 const PORT = 8005;
-const BASE_DIR = process.cwd(); // serve current folder
+const BASE_DIR = process.cwd();
 
-// --- Simple HTTP server ---
 const server = http.createServer((req, res) => {
     let filePath = path.join(BASE_DIR, req.url === '/' ? 'index.html' : req.url);
 
@@ -32,7 +31,6 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, () => console.log(`HTTP server running at http://localhost:${PORT}`));
 
-// --- Watcher for OpenAPI files ---
 const watcher = chokidar.watch(
     [
         'openapi.yaml',
@@ -48,10 +46,8 @@ const bundle = () => {
     });
 };
 
-// Initial bundle
 bundle();
 
-// Rebundle on file changes
 watcher.on('change', (filePath) => {
     console.log(`File changed: ${filePath}`);
     bundle();
