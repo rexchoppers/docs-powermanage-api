@@ -5,6 +5,9 @@ get:
     Requires both `User-Token` and `Session-Token` headers.
   tags:
     - REST:10.0:Users
+  parameters:
+    - $ref: '../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../openapi.yaml#/components/parameters/SessionTokenHeader'
   responses:
     '200':
       description: List of users and the maximum supported users count
@@ -48,6 +51,4 @@ get:
                 name: "Joe Bloggs 2"
                 partitions: [1]
                 email: "joe2@bloggs.com"
-  security:
-    - UserToken: []
-      SessionToken: []
+

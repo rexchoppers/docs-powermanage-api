@@ -6,6 +6,8 @@ post:
     subsequent panel-specific operations.
   tags:
     - REST:Panel
+  parameters:
+    - $ref: '../../openapi.yaml#/components/parameters/UserTokenHeader'
   requestBody:
     required: true
     content:
@@ -55,5 +57,3 @@ post:
             session_token: "c79205bc-6168-47eb-aaa9-b430e4cfd456"
     '401':
       description: Unauthorized (invalid or missing User-Token, or invalid credentials)
-  security:
-    - UserToken: []

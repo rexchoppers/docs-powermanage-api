@@ -89,5 +89,21 @@ components:
       in: header
       name: Session-Token
       description: Panel-specific session token used alongside User-Token for panel operations.
+  parameters:
+    UserTokenHeader:
+      in: header
+      name: User-Token
+      required: true
+      schema:
+        type: string
+        example: "USER_TOKEN"
+      description: Token identifying the user
 
-
+    SessionTokenHeader:
+      in: header
+      name: Session-Token
+      required: true
+      schema:
+        type: string
+        example: "SESSION_TOKEN"
+      description: Token identifying the current session
