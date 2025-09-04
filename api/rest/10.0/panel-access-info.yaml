@@ -1,0 +1,75 @@
+get:
+  summary: Get panel access information
+  description: |
+    Returns access information for the specified panel.
+  tags:
+    - REST:10.0:Panel
+  parameters:
+    - $ref: '../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - in: query
+      name: panel_web_name
+      required: true
+      schema:
+        type: string
+      description: Panel serial number
+      example: AAAAAA
+    - in: query
+      name: app_type
+      required: true
+      schema:
+        type: string
+      description: App ID (See App IDs)
+      example: 696a5dd8-1ace-4667-b3f4-fc4bd295e597
+  responses:
+    '200':
+      description: Access status for user and installer
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              user:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: active
+                  error:
+                    nullable: true
+                    oneOf:
+                      - type: string
+                      - type: 'null'
+                  stage:
+                    nullable: true
+                    oneOf:
+                      - type: string
+                      - type: 'null'
+              installer:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: active
+                  error:
+                    nullable: true
+                    oneOf:
+                      - type: string
+                      - type: 'null'
+                  stage:
+                    nullable: true
+                    oneOf:
+                      - type: string
+                      - type: 'null'
+          example:
+            user:
+              status: "active"
+              error: null
+              stage: null
+            installer:
+              status: "active"
+              error: null
+              stage: null
+    '400':
+      description: Bad Request — missing or invalid query parameters
+    '401':
+      description: Unauthorized — missing or invalid User-Token
