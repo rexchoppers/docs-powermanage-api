@@ -5,7 +5,6 @@ post:
     The returned `session_token` must be supplied in the `Session-Token` header for
     subsequent panel-specific operations.
   tags:
-    - REST
     - REST:Panel
   requestBody:
     required: true

@@ -35,8 +35,7 @@ info:
     Reusable security schemes are defined for both headers. Most endpoints require `User-Token`. Panel-specific operations typically require both `User-Token` and `Session-Token`.
 servers: []
 
-security:
-  - UserToken: []
+security: []
 
 tags:
   - name: PowerManage API
@@ -54,9 +53,17 @@ tags:
 
   - name: REST:Versions
   - name: Installer:Versions
+
   - name: REST:Panel
     description: |
       Panel-related REST operations such as creating a panel session (login) using User-Token and returning Session-Token.
+
+  - name: REST:10.0:Users
+    description: |
+      REST 10.0 endpoints related to user management for a specific panel.
+  - name: REST:10.0:Auth
+    description: |
+      REST 10.0 endpoints for authenticating a user and obtaining a User-Token.
 
 paths:
   /version:
@@ -65,6 +72,10 @@ paths:
     $ref: './api/apptype.yaml'
   /panel/login:
     $ref: './api/rest/login.yaml'
+  /users:
+    $ref: './api/rest/10.0/users.yaml'
+  /auth:
+    $ref: './api/rest/10.0/auth.yaml'
 
 components:
   securitySchemes:

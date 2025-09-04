@@ -1,0 +1,53 @@
+get:
+  summary: List panel users
+  description: |
+    Returns a list of users registered with the currently selected panel.
+    Requires both `User-Token` and `Session-Token` headers.
+  tags:
+    - REST:10.0:Users
+  responses:
+    '200':
+      description: List of users and the maximum supported users count
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              max_users_count:
+                type: integer
+                description: Maximum number of users supported by the panel
+                example: 8
+              users:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    name:
+                      type: string
+                      example: Joe Bloggs 1
+                    partitions:
+                      type: array
+                      items:
+                        type: integer
+                      example: [1, 2, 3]
+                    email:
+                      type: string
+                      format: email
+                      example: joe1@bloggs.com
+          example:
+            max_users_count: 8
+            users:
+              - id: 1
+                name: "Joe Bloggs 1"
+                partitions: [1, 2, 3]
+                email: "joe1@bloggs.com"
+              - id: 2
+                name: "Joe Bloggs 2"
+                partitions: [1]
+                email: "joe2@bloggs.com"
+  security:
+    - UserToken: []
+      SessionToken: []

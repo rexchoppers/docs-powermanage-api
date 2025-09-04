@@ -1,0 +1,128 @@
+post:
+  summary: Authenticate
+  description: |
+    Authenticate a user against the REST API and obtain a `User-Token`.
+    This token must be supplied in the `User-Token` header for subsequent requests
+    that require user authentication.
+
+    This endpoint does not require authentication.
+  tags:
+    - REST:10.0:Auth
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+              format: email
+              description: User's email address
+              example: user@example.com
+            password:
+              type: string
+              format: password
+              description: User's password
+              example: "<password>"
+            app_id:
+              type: string
+              description: Application ID (UUID). See App IDs.
+              example: "<app id>"
+          required:
+            - email
+            - password
+            - app_id
+        example:
+          email: "<email>"
+          password: "<password>"
+          app_id: "<app id>"
+  responses:
+    '200':
+      description: Authentication successful; returns a `User-Token` and customization data
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              user_token:
+                type: string
+                description: Token to use in the `User-Token` header for subsequent requests
+                example: 917678b6-db1f-49b9-8c1d-cb9c1a4d4a2f
+              customization:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: Default
+                  is_default:
+                    type: boolean
+                    example: true
+                  created:
+                    type: integer
+                    example: 0
+                  changed:
+                    type: integer
+                    example: 1689192872
+                  data:
+                    type: object
+                    properties:
+                      apptype:
+                        type: string
+                        example: ""
+                      android:
+                        type: string
+                        example: "market://details?id=com.visonic.neo"
+                      ios:
+                        type: string
+                        example: "itms-apps://itunes.apple.com/app/connectalarm/id1300525077"
+                      customization:
+                        type: object
+                        properties:
+                          themes:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                name:
+                                  type: string
+                                brightness:
+                                  type: string
+                                  enum: [light, dark]
+                                colors:
+                                  type: object
+                                  properties:
+                                    primary:
+                                      type: string
+                                    gradient:
+                                      type: array
+                                      items:
+                                        type: string
+          example:
+            user_token: "917678b6-db1f-49b9-8c1d-cb9c1a4d4a2f"
+            customization:
+              id: 1
+              name: "Default"
+              is_default: true
+              created: 0
+              changed: 1689192872
+              data:
+                apptype: ""
+                android: "market://details?id=com.visonic.neo"
+                ios: "itms-apps://itunes.apple.com/app/connectalarm/id1300525077"
+                customization:
+                  themes:
+                    - name: "Estoril"
+                      brightness: "light"
+                      colors:
+                        primary: "#006AFF"
+                        gradient: ["#00539E", "#21329D", "#2A2A9D"]
+                    - name: "Azurite"
+                      brightness: "dark"
+                      colors:
+                        primary: "#00A3FF"
+                        gradient: ["#1A2B3B", "#222133", "#261D2D"]
+  security: []
