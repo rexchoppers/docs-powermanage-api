@@ -33,7 +33,12 @@ const server = http.createServer((req, res) => {
 server.listen(PORT, () => console.log(`HTTP server running at http://localhost:${PORT}`));
 
 // --- Watcher for OpenAPI files ---
-const watcher = chokidar.watch(['openapi.yaml', 'api/**/*.yaml'], { persistent: true });
+const watcher = chokidar.watch(
+    [
+        'openapi.yaml',
+        'api/**/*.yaml'
+    ],
+    { persistent: true });
 
 const bundle = () => {
     console.log('Bundling OpenAPI spec...');
