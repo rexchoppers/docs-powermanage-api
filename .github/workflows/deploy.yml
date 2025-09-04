@@ -24,16 +24,17 @@ jobs:
       - name: Bundle OpenAPI Spec
         run: npx redocly bundle openapi.yaml -o complete.yaml
 
-      - name: ZIP Site Files
+      - name: Move Site Files
         run: |
-          mkdir -p deploy
-          zip -r deploy/site.zip complete.yaml index.html
+            mkdir -p deploy
+            mv complete.yaml deploy/
+            mv index.html deploy/
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
-          path: deploy
+          path: deploy/
 
   deploy:
     needs: build
