@@ -56,3 +56,4 @@ npx redocly bundle openapi.yaml -o complete.yaml
 - `@scalar/api-reference` — loaded via CDN in `index.html` to render the docs UI
 
 ## License
+MIT License. See `LICENSE` file.
