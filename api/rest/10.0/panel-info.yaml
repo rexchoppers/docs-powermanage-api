@@ -3,7 +3,6 @@ get:
   description: |
     Returns high level panel configuration information such as settable states, supported features, and partitions
   tags:
-    - REST
     - REST:10.0:Panel
   parameters:
     - $ref: '../../../openapi.yaml#/components/parameters/UserTokenHeader'
