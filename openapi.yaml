@@ -72,9 +72,9 @@ paths:
     $ref: './api/apptype.yaml'
   /panel/login:
     $ref: './api/rest/login.yaml'
-  /users:
+  /10.0/users:
     $ref: './api/rest/10.0/users.yaml'
-  /auth:
+  /10.0/auth:
     $ref: './api/rest/10.0/auth.yaml'
 
 components:
