@@ -64,6 +64,9 @@ tags:
   - name: REST:10.0:Auth
     description: |
       REST 10.0 endpoints for authenticating a user and obtaining a User-Token.
+  - name: REST:10.0:Panel
+    description: |
+      REST 10.0 endpoints related to panel information and actions for a specific panel.
 
 paths:
   /version:
@@ -76,6 +79,8 @@ paths:
     $ref: './api/rest/10.0/users.yaml'
   /10.0/auth:
     $ref: './api/rest/10.0/auth.yaml'
+  /10.0/panel_info:
+    $ref: './api/rest/10.0/panel-info.yaml'
 
 components:
   securitySchemes:

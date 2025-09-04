@@ -2,7 +2,6 @@ get:
   summary: List panel users
   description: |
     Returns a list of users registered with the currently selected panel.
-    Requires both `User-Token` and `Session-Token` headers.
   tags:
     - REST:10.0:Users
   parameters:

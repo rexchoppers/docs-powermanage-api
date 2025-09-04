@@ -1,0 +1,140 @@
+get:
+  summary: Get panel information
+  description: |
+    Returns high level panel configuration information such as settable states, supported features, and partitions
+  tags:
+    - REST
+    - REST:10.0:Panel
+  parameters:
+    - $ref: '../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../openapi.yaml#/components/parameters/SessionTokenHeader'
+  responses:
+    '200':
+      description: Panel information
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              serial:
+                type: string
+              model:
+                type: string
+              manufacturer:
+                type: string
+              current_user:
+                type: string
+              state_sets:
+                type: object
+                additionalProperties:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      settable:
+                        type: boolean
+                      options:
+                        type: array
+                        items:
+                          type: string
+                      statuses:
+                        type: array
+                        items:
+                          type: string
+                      transitions:
+                        type: array
+                        items:
+                          type: string
+              partitions:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    active:
+                      type: boolean
+                    exit_delay_time:
+                      type: integer
+                    state_set:
+                      type: string
+                    name:
+                      type: string
+              bypass_mode:
+                type: string
+              local_wakeup_needed:
+                type: boolean
+              remote_switch_to_programming_mode_requires_user_acceptance:
+                type: boolean
+              features:
+                type: object
+                properties:
+                  video_on_demand:
+                    type: boolean
+                  alerts:
+                    type: boolean
+                  enabling_siren:
+                    type: boolean
+                  disabling_siren:
+                    type: boolean
+                  wi_fi_connection:
+                    type: boolean
+                  set_date_time:
+                    type: boolean
+                  outputs_setup:
+                    type: boolean
+          example:
+            serial: "AAAAAA"
+            model: "PowerMaster 10"
+            manufacturer: "Visonic"
+            current_user: "master_user"
+            state_sets:
+              all:
+                - name: "AWAY"
+                  settable: true
+                  options: ["NOENTRY", "LATCHKEY"]
+                  statuses: ["EXIT"]
+                  transitions: ["DISARM", "HOME"]
+                - name: "HOME"
+                  settable: true
+                  options: ["NOENTRY"]
+                  statuses: ["EXIT"]
+                  transitions: ["DISARM", "AWAY"]
+                - name: "DISARM"
+                  settable: true
+                  options: []
+                  statuses: []
+                  transitions: ["DISARM", "AWAY", "HOME"]
+                - name: "ENTRY_DELAY"
+                  settable: false
+                  options: []
+                  statuses: []
+                  transitions: ["DISARM"]
+                - name: "PROGRAMMING"
+                  settable: false
+                  options: []
+                  statuses: []
+                  transitions: []
+            partitions:
+              - id: -1
+                active: true
+                exit_delay_time: 30
+                state_set: "all"
+                name: "ALL"
+            bypass_mode: "manual_bypass"
+            local_wakeup_needed: false
+            remote_switch_to_programming_mode_requires_user_acceptance: true
+            features:
+              video_on_demand: true
+              alerts: true
+              enabling_siren: true
+              disabling_siren: true
+              wi_fi_connection: false
+              set_date_time: true
+              outputs_setup: true
+    '401':
+      description: Unauthorized — missing or invalid User-Token or Session-Token
+    '403':
+      description: Forbidden — authenticated but not allowed to access this panel
