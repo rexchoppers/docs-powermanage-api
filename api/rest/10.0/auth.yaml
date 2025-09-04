@@ -125,4 +125,3 @@ post:
                       colors:
                         primary: "#00A3FF"
                         gradient: ["#1A2B3B", "#222133", "#261D2D"]
-  security: []

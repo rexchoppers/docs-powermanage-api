@@ -33,7 +33,9 @@ info:
     - `Session-Token`: Used alongside `User-Token` for operations on a specific panel.
 
     Reusable security schemes are defined for both headers. Most endpoints require `User-Token`. Panel-specific operations typically require both `User-Token` and `Session-Token`.
-servers: []
+servers:
+    - url: https://visonic.tycomonitor.com/rest_api
+      description: PowerManage API server
 
 security: []
 
