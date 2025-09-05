@@ -7,7 +7,7 @@
   },
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Documentation site and tooling for the PowerManage API - Visonic/Tyco security system REST API used by mobile apps and installers",
   "dependencies": {
     "@redocly/cli": "^2.0.8",
     "nodemon": "^3.1.10"
