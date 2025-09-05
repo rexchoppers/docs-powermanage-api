@@ -56,9 +56,9 @@ tags:
   - name: Installer:8.0:Device
     description: |
       Installer 8.0 endpoints related to devices connected to the panel.
-  - name: Installer:10.0:Group
+  - name: Installer:8.0.0:Group
     description: |
-      Installer 10.0 endpoints related to grouping and group membership.
+      Installer 8.0 endpoints related to grouping and group membership.
 
   - name: REST:Versions
   - name: Installer:Versions
@@ -97,8 +97,8 @@ paths:
     $ref: './api/version.yaml'
   /installer/8.0/devices:
     $ref: './api/installer/8.0/devices.yaml'
-  /installer/10.0/groups:
-    $ref: './api/installer/10.0/groups.yaml'
+  /installer/8.0/groups:
+    $ref: './api/installer/8.0/groups.yaml'
   /apptype:
     $ref: './api/apptype.yaml'
   /panel/login:

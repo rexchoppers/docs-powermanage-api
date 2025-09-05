@@ -3,7 +3,7 @@ get:
   description: |
     Returns the groups the panel can become a part of. (Exact semantics are uncertain.)
   tags:
-    - Installer:10.0:Group
+    - Installer:8.0:Group
   parameters:
     - $ref: '../../../openapi.yaml#/components/parameters/UserTokenHeader'
   responses:
