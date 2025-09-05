@@ -1,0 +1,32 @@
+post:
+  summary: Allow switch to programming mode
+  description: |
+    Allows an installer to access the panel and switch to programming mode.
+  tags:
+    - REST:10.0:Misc
+  parameters:
+    - $ref: '../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../openapi.yaml#/components/parameters/SessionTokenHeader'
+  requestBody:
+    required: false
+    content:
+      application/json:
+        schema:
+          type: object
+          description: Empty object
+        example: {}
+  responses:
+    '200':
+      description: Operation result
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              result:
+                type: string
+                enum: [succeeded, failed]
+          example:
+            result: "succeeded"
+    '401':
+      description: Unauthorized — missing or invalid User-Token or Session-Token

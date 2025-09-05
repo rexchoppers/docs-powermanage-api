@@ -1,0 +1,89 @@
+get:
+  summary: List home automation devices
+  description: |
+    Returns a list of home automation devices that are connected to the panel.
+  tags:
+    - REST:10.0:Misc
+  parameters:
+    - $ref: '../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../openapi.yaml#/components/parameters/SessionTokenHeader'
+  responses:
+    '200':
+      description: A list of home automation devices connected to the panel
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                class:
+                  type: string
+                name:
+                  nullable: true
+                  oneOf:
+                    - type: string
+                    - type: 'null'
+                user_type:
+                  nullable: true
+                  oneOf:
+                    - type: string
+                    - type: 'null'
+                device_type:
+                  type: string
+                product_type:
+                  nullable: true
+                  oneOf:
+                    - type: string
+                    - type: 'null'
+                product_name:
+                  nullable: true
+                  oneOf:
+                    - type: string
+                    - type: 'null'
+                state:
+                  type: object
+                  properties:
+                    pgm:
+                      type: string
+                      enum: [off, on]
+                location:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                partitions:
+                  type: array
+                  items:
+                    type: integer
+                supported_commands:
+                  type: array
+                  items:
+                    type: string
+                has_timer:
+                  type: boolean
+                label_editable:
+                  type: boolean
+          example:
+            - id: 1
+              class: "pgm"
+              name: null
+              user_type: null
+              device_type: "PGM"
+              product_type: null
+              product_name: null
+              state:
+                pgm: "off"
+              location:
+                id: 12
+                name: "Front door"
+              partitions: [-1]
+              supported_commands: ["output"]
+              has_timer: true
+              label_editable: true
+    '401':
+      description: Unauthorized — missing or invalid User-Token or Session-Token
