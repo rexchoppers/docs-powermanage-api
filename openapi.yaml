@@ -78,6 +78,9 @@ tags:
   - name: REST:10.0:Misc
     description: |
       REST 10.0 miscellaneous endpoints (smart devices, home automation devices, utility actions).
+  - name: REST:10.0:Event
+    description: |
+      REST 10.0 endpoints related to panel event history.
 
 paths:
   /version:
@@ -110,6 +113,8 @@ paths:
     $ref: './api/rest/10.0/home-automation-devices.yaml'
   /10.0/allow_switch_to_programming_mode:
     $ref: './api/rest/10.0/allow-switch-to-programming-mode.yaml'
+  /10.0/events:
+    $ref: './api/rest/10.0/events.yaml'
 
 components:
   securitySchemes:

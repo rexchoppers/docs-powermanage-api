@@ -1,0 +1,94 @@
+get:
+  summary: List events
+  description: |
+    Returns a list of events that have occurred on the panel.
+  tags:
+    - REST:10.0:Event
+  parameters:
+    - $ref: '../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../openapi.yaml#/components/parameters/SessionTokenHeader'
+  responses:
+    '200':
+      description: A list of events from the panel
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                event:
+                  type: integer
+                type_id:
+                  type: integer
+                label:
+                  type: string
+                description:
+                  type: string
+                appointment:
+                  type: string
+                datetime:
+                  type: string
+                  description: Event timestamp in 'YYYY-MM-DD HH:MM:SS' format
+                video:
+                  type: boolean
+                device_type:
+                  type: string
+                zone:
+                  nullable: true
+                  oneOf:
+                    - type: integer
+                    - type: 'null'
+                zone_name:
+                  type: string
+                partitions:
+                  type: array
+                  items:
+                    type: integer
+          example:
+            - event: 198668428
+              type_id: 993
+              label: "OFFLINE"
+              description: "BBA module has gone offline"
+              appointment: "IPMP"
+              datetime: "2025-01-13 14:33:27"
+              video: false
+              device_type: "IPMP"
+              zone: null
+              zone_name: ""
+              partitions: [1]
+            - event: 198668429
+              type_id: 998
+              label: "OFFLINE"
+              description: "Panel has gone offline"
+              appointment: "IPMP"
+              datetime: "2025-01-13 14:33:27"
+              video: false
+              device_type: "IPMP"
+              zone: null
+              zone_name: ""
+              partitions: [1]
+            - event: 198685335
+              type_id: 86
+              label: "ARM"
+              description: "Arm Away"
+              appointment: "Joe Bloggs"
+              datetime: "2025-01-13 16:44:10"
+              video: false
+              device_type: "USER"
+              zone: 1
+              zone_name: "Joe Bloggs"
+              partitions: [1]
+            - event: 199824640
+              type_id: 27
+              label: "BURGLER"
+              description: "Control Panel Tamper Restore"
+              appointment: "Control Panel"
+              datetime: "2025-01-21 15:54:48"
+              video: false
+              device_type: "CONTROL_PANEL"
+              zone: 0
+              zone_name: ""
+              partitions: [1]
+    '401':
+      description: Unauthorized — missing or invalid User-Token or Session-Token
