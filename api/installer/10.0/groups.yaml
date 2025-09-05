@@ -1,0 +1,43 @@
+get:
+  summary: List installer groups
+  description: |
+    Returns the groups the panel can become a part of. (Exact semantics are uncertain.)
+  tags:
+    - Installer:10.0:Group
+  parameters:
+    - $ref: '../../../openapi.yaml#/components/parameters/UserTokenHeader'
+  responses:
+    '200':
+      description: A list of installer groups
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                description:
+                  type: string
+                is_selected:
+                  type: boolean
+                central_stations:
+                  type: array
+                  items:
+                    type: string
+          example:
+            - id: 1
+              name: "Main Group"
+              description: ""
+              is_selected: false
+              central_stations: []
+            - id: 5
+              name: "TestGroup"
+              description: "Only for the upgrade to 4.12.42"
+              is_selected: true
+              central_stations: []
+    '401':
+      description: Unauthorized — missing or invalid User-Token
