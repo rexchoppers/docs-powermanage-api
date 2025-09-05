@@ -1,0 +1,176 @@
+get:
+  summary: Get panel information (Installer 8.0)
+  description: |
+    Returns high level panel configuration information such as current state, partitions and firmware information.
+  tags:
+    - Installer:8.0:Panel
+  parameters:
+    - $ref: '../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../openapi.yaml#/components/parameters/SessionTokenHeader'
+  responses:
+    '200':
+      description: Panel information
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              serial:
+                type: string
+              model:
+                type: string
+              manufacturer:
+                type: string
+              current_user:
+                type: string
+              bypass_mode:
+                type: string
+              local_wakeup_needed:
+                type: boolean
+              remote_switch_to_programming_mode_requires_user_acceptance:
+                type: boolean
+              state_sets:
+                type: object
+                properties:
+                  default:
+                    nullable: true
+                    oneOf:
+                      - type: 'null'
+                      - type: string
+                  all:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        settable:
+                          type: boolean
+                        options:
+                          nullable: true
+                          oneOf:
+                            - type: 'null'
+                            - type: array
+                              items:
+                                type: string
+                        statuses:
+                          nullable: true
+                          oneOf:
+                            - type: 'null'
+                            - type: array
+                              items:
+                                type: string
+                        transitions:
+                          nullable: true
+                          oneOf:
+                            - type: 'null'
+                            - type: array
+                              items:
+                                type: string
+              partitions:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    active:
+                      type: boolean
+                    exit_delay:
+                      type: integer
+                    state_set:
+                      type: string
+              firmware:
+                type: object
+                properties:
+                  panel_boot_version:
+                    type: string
+                  panel_default_version:
+                    type: string
+                  panel_eeprom_version:
+                    type: string
+                  panel_hw_version:
+                    type: string
+                  panel_rsu_version:
+                    type: string
+                  panel_sw_last_upgraded:
+                    type: string
+                  panel_sw_version:
+                    type: string
+                  powerlink_configuration_variant:
+                    type: string
+                  powerlink_hw_version:
+                    type: string
+                  powerlink_sw_last_upgraded:
+                    type: string
+                  powerlink_sw_version:
+                    type: string
+              features:
+                type: object
+                properties:
+                  video_on_demand:
+                    type: boolean
+                  alerts:
+                    type: boolean
+                  enabling_siren:
+                    type: boolean
+                  disabling_siren:
+                    type: boolean
+                  wi_fi_connection:
+                    type: boolean
+                  set_date_time:
+                    type: boolean
+                  outputs_setup:
+                    type: boolean
+                  gsm_rssi_level_on_request:
+                    type: boolean
+          example:
+            name: "AAAAAA"
+            serial: "AAAAAA"
+            model: "PowerMaster 10"
+            manufacturer: "Visonic"
+            current_user: "INSTALLER"
+            bypass_mode: "manual_bypass"
+            local_wakeup_needed: false
+            remote_switch_to_programming_mode_requires_user_acceptance: false
+            state_sets:
+              default: null
+              all:
+                - name: "PROGRAMMING"
+                  settable: false
+                  options: null
+                  statuses: null
+                  transitions: null
+            partitions:
+              - id: -1
+                name: "ALL"
+                active: true
+                exit_delay: 30
+                state_set: "all"
+            firmware:
+              panel_boot_version: "JS702413 I01.033"
+              panel_default_version: "J-703883 I20.214"
+              panel_eeprom_version: "7.174"
+              panel_hw_version: "PowerMaster-10"
+              panel_rsu_version: "JS702414 I02.036"
+              panel_sw_last_upgraded: ""
+              panel_sw_version: "JS703642 I20.214"
+              powerlink_configuration_variant: "adtuk"
+              powerlink_hw_version: "plink3"
+              powerlink_sw_last_upgraded: ""
+              powerlink_sw_version: "7.5.58"
+            features:
+              video_on_demand: true
+              alerts: true
+              enabling_siren: true
+              disabling_siren: true
+              wi_fi_connection: false
+              set_date_time: true
+              outputs_setup: true
+              gsm_rssi_level_on_request: false
+    '401':
+      description: Unauthorized — missing or invalid User-Token or Session-Token
