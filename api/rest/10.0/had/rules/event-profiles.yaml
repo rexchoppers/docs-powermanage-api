@@ -1,0 +1,61 @@
+get:
+  summary: Get event profiles
+  description: |
+    Returns the events, translations, and SIA/CID/VIS codes for the specified locale.
+  tags:
+    - REST:10.0:Had:Rules
+  parameters:
+    - $ref: '../../../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../../../openapi.yaml#/components/parameters/SessionTokenHeader'
+    - in: path
+      name: locale
+      required: true
+      schema:
+        type: string
+      description: Locale code (e.g., en_US)
+      example: en_US
+  responses:
+    '200':
+      description: List of event profiles for the given locale
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                profile:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    description:
+                      type: string
+                    description_original:
+                      type: string
+                events:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      description:
+                        type: string
+                      description_original:
+                        type: string
+                      description_placeholder_arguments:
+                        type: array
+                        items:
+                          type: string
+                      code_vis:
+                        type: string
+                      code_cid:
+                        type: string
+                      code_sia:
+                        type: string
+                      type_id:
+                        type: integer
+                      label:
+                        type: string
+                      label_description:
+                        type: string
+          example:
