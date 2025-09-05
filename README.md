@@ -1,6 +1,6 @@
 # PowerManage API Docs
 
-Documentation site and tooling for the PowerManage API. This repository contains the OpenAPI specification (both a main entry file and modular YAMLs) and a tiny local dev server that bundles the spec and serves a live preview using Scalar API Reference.
+Documentation for the Visonic/Tyco/JC PowerManage API. This repository contains the OpenAPI specification (both a main entry file and modular YAMLs) and a tiny local dev server that bundles the spec and serves a live preview using Scalar API Reference.
 
 ## Features
 - Modular OpenAPI YAML under `./api` with a top-level `openapi.yaml` entry.
