@@ -111,31 +111,31 @@ paths:
   /panel/login:
     $ref: './api/rest/login.yaml'
   /10.0/users:
-    $ref: './api/rest/10.0/users.yaml'
+    $ref: './api/rest/10.0/user/users.yaml'
   /10.0/auth:
-    $ref: './api/rest/10.0/auth.yaml'
+    $ref: './api/rest/10.0/auth/auth.yaml'
   /10.0/panel_info:
-    $ref: './api/rest/10.0/panel-info.yaml'
+    $ref: './api/rest/10.0/panel/panel-info.yaml'
   /10.0/panels:
-    $ref: './api/rest/10.0/panels.yaml'
+    $ref: './api/rest/10.0/panel/panels.yaml'
   /10.0/status:
-    $ref: './api/rest/10.0/status.yaml'
+    $ref: './api/rest/10.0/panel/status.yaml'
   /10.0/panel_access_info:
     $ref: './api/rest/10.0/panel/panel-access-info.yaml'
   /10.0/locations:
-    $ref: './api/rest/10.0/locations.yaml'
+    $ref: './api/rest/10.0/location/locations.yaml'
   /10.0/feature_set:
-    $ref: './api/rest/10.0/feature-set.yaml'
+    $ref: './api/rest/10.0/panel/feature-set.yaml'
   /10.0/devices:
-    $ref: './api/rest/10.0/devices.yaml'
+    $ref: './api/rest/10.0/device/devices.yaml'
   /10.0/smart_devices:
-    $ref: './api/rest/10.0/smart-devices.yaml'
+    $ref: './api/rest/10.0/misc/smart-devices.yaml'
   /10.0/home_automation_devices:
-    $ref: './api/rest/10.0/home-automation-devices.yaml'
+    $ref: './api/rest/10.0/misc/home-automation-devices.yaml'
   /10.0/allow_switch_to_programming_mode:
     $ref: './api/rest/10.0/misc/allow-switch-to-programming-mode.yaml'
   /10.0/events:
-    $ref: './api/rest/10.0/events.yaml'
+    $ref: './api/rest/10.0/event/events.yaml'
   /had/rules/event-profiles/{locale}:
     $ref: './api/rest/10.0/had/rules/event-profiles.yaml'
   /had/rules/restrictions:

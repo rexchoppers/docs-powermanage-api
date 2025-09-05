@@ -5,7 +5,7 @@ get:
   tags:
     - REST:10.0:Panel
   parameters:
-    - $ref: '../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../../openapi.yaml#/components/parameters/UserTokenHeader'
   responses:
     '200':
       description: A list of panels linked to the user

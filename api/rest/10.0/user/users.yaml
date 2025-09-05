@@ -5,8 +5,8 @@ get:
   tags:
     - REST:10.0:Users
   parameters:
-    - $ref: '../../../openapi.yaml#/components/parameters/UserTokenHeader'
-    - $ref: '../../../openapi.yaml#/components/parameters/SessionTokenHeader'
+    - $ref: '../../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../../openapi.yaml#/components/parameters/SessionTokenHeader'
   responses:
     '200':
       description: List of users and the maximum supported users count

@@ -6,8 +6,8 @@ get:
   tags:
     - REST:10.0:Panel
   parameters:
-    - $ref: '../../../openapi.yaml#/components/parameters/UserTokenHeader'
-    - $ref: '../../../openapi.yaml#/components/parameters/SessionTokenHeader'
+    - $ref: '../../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../../openapi.yaml#/components/parameters/SessionTokenHeader'
   responses:
     '200':
       description: Basic panel status information

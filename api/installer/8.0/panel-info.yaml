@@ -1,5 +1,5 @@
 get:
-  summary: Get panel information (Installer 8.0)
+  summary: Get panel information
   description: |
     Returns high level panel configuration information such as current state, partitions and firmware information.
   tags:
