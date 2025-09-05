@@ -53,6 +53,10 @@ tags:
       Endpoints for installer workflows.
       Base: https://visonic.tycomonitor.com/rest_api/installer/{installer_version}
 
+  - name: Installer:8.0:Device
+    description: |
+      Installer 8.0 endpoints related to devices connected to the panel.
+
   - name: REST:Versions
   - name: Installer:Versions
 
@@ -88,6 +92,8 @@ tags:
 paths:
   /version:
     $ref: './api/version.yaml'
+  /installer/8.0/devices:
+    $ref: './api/installer/8.0/devices.yaml'
   /apptype:
     $ref: './api/apptype.yaml'
   /panel/login:
