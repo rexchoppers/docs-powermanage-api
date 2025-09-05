@@ -72,6 +72,9 @@ tags:
   - name: REST:10.0:Location
     description: |
       REST 10.0 endpoints related to static locations/zones names available on the panel.
+  - name: REST:10.0:Device
+    description: |
+      REST 10.0 endpoints related to devices connected to the panel.
 
 paths:
   /version:
@@ -96,6 +99,8 @@ paths:
     $ref: './api/rest/10.0/locations.yaml'
   /10.0/feature_set:
     $ref: './api/rest/10.0/feature-set.yaml'
+  /10.0/devices:
+    $ref: './api/rest/10.0/devices.yaml'
 
 components:
   securitySchemes:
