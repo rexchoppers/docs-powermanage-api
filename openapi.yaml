@@ -95,6 +95,8 @@ tags:
 paths:
   /version:
     $ref: './api/version.yaml'
+  /installer/8.0/group/assign:
+    $ref: './api/installer/8.0/group-assign.yaml'
   /installer/8.0/devices:
     $ref: './api/installer/8.0/devices.yaml'
   /installer/8.0/groups:

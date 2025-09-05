@@ -6,6 +6,7 @@ get:
     - Installer:8.0:Group
   parameters:
     - $ref: '../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../openapi.yaml#/components/parameters/SessionTokenHeader'
   responses:
     '200':
       description: A list of installer groups
