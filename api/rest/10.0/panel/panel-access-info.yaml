@@ -5,7 +5,7 @@ get:
   tags:
     - REST:10.0:Panel
   parameters:
-    - $ref: '../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../../openapi.yaml#/components/parameters/UserTokenHeader'
     - in: query
       name: panel_web_name
       required: true

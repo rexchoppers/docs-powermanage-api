@@ -121,7 +121,7 @@ paths:
   /10.0/status:
     $ref: './api/rest/10.0/status.yaml'
   /10.0/panel_access_info:
-    $ref: './api/rest/10.0/panel-access-info.yaml'
+    $ref: './api/rest/10.0/panel/panel-access-info.yaml'
   /10.0/locations:
     $ref: './api/rest/10.0/locations.yaml'
   /10.0/feature_set:
@@ -133,7 +133,7 @@ paths:
   /10.0/home_automation_devices:
     $ref: './api/rest/10.0/home-automation-devices.yaml'
   /10.0/allow_switch_to_programming_mode:
-    $ref: './api/rest/10.0/allow-switch-to-programming-mode.yaml'
+    $ref: './api/rest/10.0/misc/allow-switch-to-programming-mode.yaml'
   /10.0/events:
     $ref: './api/rest/10.0/events.yaml'
   /had/rules/event-profiles/{locale}:
