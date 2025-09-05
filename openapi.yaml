@@ -94,6 +94,8 @@ paths:
     $ref: './api/rest/10.0/panel-access-info.yaml'
   /10.0/locations:
     $ref: './api/rest/10.0/locations.yaml'
+  /10.0/feature_set:
+    $ref: './api/rest/10.0/feature-set.yaml'
 
 components:
   securitySchemes:
