@@ -69,6 +69,9 @@ tags:
   - name: REST:10.0:Panel
     description: |
       REST 10.0 endpoints related to panel information and actions for a specific panel.
+  - name: REST:10.0:Location
+    description: |
+      REST 10.0 endpoints related to static locations/zones names available on the panel.
 
 paths:
   /version:
@@ -89,6 +92,8 @@ paths:
     $ref: './api/rest/10.0/status.yaml'
   /10.0/panel_access_info:
     $ref: './api/rest/10.0/panel-access-info.yaml'
+  /10.0/locations:
+    $ref: './api/rest/10.0/locations.yaml'
 
 components:
   securitySchemes:
