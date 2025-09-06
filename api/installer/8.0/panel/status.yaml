@@ -1,0 +1,82 @@
+get:
+  summary: Get Panel Status
+  description: |
+    Returns basic panel information such as BBA connected status and partition status.
+  tags:
+    - Installer:8.0:Panel
+  parameters:
+    - $ref: '../../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../../openapi.yaml#/components/parameters/SessionTokenHeader'
+  responses:
+    '200':
+      description: Panel status information
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              bba:
+                type: object
+                properties:
+                  connected:
+                    type: boolean
+                  state:
+                    type: string
+              gprs:
+                nullable: true
+                oneOf:
+                  - type: 'null'
+                  - type: object
+              wifi:
+                nullable: true
+                oneOf:
+                  - type: 'null'
+                  - type: object
+              bba_over_gprs:
+                nullable: true
+                oneOf:
+                  - type: 'null'
+                  - type: object
+              usb:
+                nullable: true
+                oneOf:
+                  - type: 'null'
+                  - type: object
+              last_discovery:
+                type: string
+                format: date-time
+                description: RFC3339 timestamp
+              partitions:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    state:
+                      type: string
+                    status:
+                      type: string
+                    options:
+                      type: array
+                      items:
+                        type: string
+                    ready:
+                      type: boolean
+          example:
+            bba:
+              connected: true
+              state: "online"
+            gprs: null
+            wifi: null
+            bba_over_gprs: null
+            usb: null
+            last_discovery: "0001-01-01T00:00:00Z"
+            partitions:
+              - id: -1
+                state: "DISARM"
+                status: ""
+                options: []
+                ready: true
+    '401':
+      description: Unauthorized — missing or invalid User-Token or Session-Token

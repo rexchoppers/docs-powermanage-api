@@ -119,6 +119,8 @@ paths:
     $ref: './api/installer/8.0/groups.yaml'
   /installer/8.0/panel_info:
     $ref: './api/installer/8.0/panel-info.yaml'
+  /installer/8.0/status:
+    $ref: './api/installer/8.0/panel/status.yaml'
   /installer/8.0/auth:
     $ref: './api/installer/8.0/auth/auth.yaml'
   /installer/8.0/users:
