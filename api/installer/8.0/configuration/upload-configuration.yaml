@@ -1,0 +1,50 @@
+post:
+  summary: Upload Configuration
+  description: |
+    Uploads a configuration update (diff) to the panel. Use with caution — this may be untested and could impact the panel.
+  tags:
+    - Installer:8.0:Configuration
+  parameters:
+    - $ref: '../../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../../openapi.yaml#/components/parameters/SessionTokenHeader'
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            diff:
+              type: array
+              description: List of changes where each item is [key, value]
+              items:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - type: string
+                  - oneOf:
+                      - type: string
+                      - type: number
+            version:
+              type: integer
+          required: [diff, version]
+        example:
+          diff:
+            - ["EE_ACCOUNT_TEL1", "006666"]
+          version: 503296
+  responses:
+    '200':
+      description: Upload accepted, a process token is returned to track progress
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              process_token:
+                type: string
+                description: Keep this token to check the status of the download
+          example:
+            process_token: "1814fa15-d9a5-11ef-8676-06640ee4c3d2"
+    '401':
+      description: Unauthorized — missing or invalid User-Token or Session-Token
