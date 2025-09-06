@@ -1,5 +1,5 @@
 post:
-  summary: Authenticate installer user
+  summary: Authenticate
   description: |
     Authenticates the user with the Installer REST API and returns a User-Token used for subsequent requests.
   tags:

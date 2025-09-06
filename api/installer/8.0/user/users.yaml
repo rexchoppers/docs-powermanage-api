@@ -1,0 +1,34 @@
+get:
+  summary: List users
+  description: |
+    Returns a list of users registered with the panel.
+  tags:
+    - Installer:8.0:User
+  parameters:
+    - $ref: '../../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../../openapi.yaml#/components/parameters/SessionTokenHeader'
+  responses:
+    '200':
+      description: Users information
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              max_users_count:
+                type: integer
+              user_names:
+                type: object
+                additionalProperties:
+                  type: string
+                description: A map of user index (as string) to user name
+          example:
+            max_users_count: 8
+            user_names:
+              "1": "Joe Bloggs"
+              "2": "Joe Bloggs"
+              "3": "Joe Bloggs"
+              "4": "Joe Bloggs"
+              "5": "Joe Bloggs"
+    '401':
+      description: Unauthorized — missing or invalid User-Token
