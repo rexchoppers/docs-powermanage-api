@@ -72,6 +72,9 @@ tags:
   - name: Installer:8.0:Event
     description: |
       Installer 8.0 endpoints related to panel event history.
+  - name: Installer:8.0:Configuration
+    description: |
+      Installer 8.0 endpoints for retrieving panel configuration exports.
 
   - name: REST:Versions
   - name: Installer:Versions
@@ -122,6 +125,8 @@ paths:
     $ref: './api/installer/8.0/user/users.yaml'
   /installer/8.0/events:
     $ref: './api/installer/8.0/event/events.yaml'
+  /installer/8.0/configuration:
+    $ref: './api/installer/8.0/configuration/configuration.yaml'
   /apptype:
     $ref: './api/apptype.yaml'
   /panel/login:

@@ -1,0 +1,70 @@
+get:
+  summary: Get configuration
+  description: |
+    Returns the configuration for the specified panel.
+  tags:
+    - Installer:8.0:Configuration
+  parameters:
+    - $ref: '../../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../../openapi.yaml#/components/parameters/SessionTokenHeader'
+    - in: query
+      name: id
+      required: true
+      schema:
+        type: integer
+      description: Configuration ID. Use `/configuration_list` to get available IDs.
+      example: 100
+  responses:
+    '200':
+      description: Configuration payload
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                description: Configuration node type
+              key:
+                type: string
+              name:
+                type: string
+              val:
+                type: array
+                description: List of configuration entries (structure varies)
+                items:
+                  oneOf:
+                    - type: object
+                    - type: string
+                    - type: number
+                    - type: boolean
+
+              version:
+                type: integer
+              timestamp:
+                type: string
+                format: date-time
+                description: ISO 8601 timestamp with timezone
+              lists:
+                type: object
+                additionalProperties:
+                  type: array
+                  items:
+                    oneOf:
+                      - type: object
+                      - type: string
+                      - type: number
+                      - type: boolean
+          example:
+            type: "menu"
+            key: ""
+            name: ""
+            val:
+              - "..."
+            version: 503296
+            timestamp: "2025-01-23T17:41:35+0200"
+            lists:
+              "1":
+                - "..."
+    '401':
+      description: Unauthorized — missing or invalid User-Token or Session-Token
