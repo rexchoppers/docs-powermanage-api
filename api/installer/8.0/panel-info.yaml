@@ -1,5 +1,5 @@
 get:
-  summary: Get panel information
+  summary: Get Panel Information
   description: |
     Returns high level panel configuration information such as current state, partitions and firmware information.
   tags:
