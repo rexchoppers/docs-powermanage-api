@@ -62,6 +62,9 @@ tags:
   - name: Installer:8.0:Panel
     description: |
       Installer 8.0 endpoints related to panel information and actions for a specific panel.
+  - name: Installer:8.0:Auth
+    description: |
+      Installer 8.0 endpoints for authenticating users and obtaining a User-Token.
 
   - name: REST:Versions
   - name: Installer:Versions
@@ -106,6 +109,8 @@ paths:
     $ref: './api/installer/8.0/groups.yaml'
   /installer/8.0/panel_info:
     $ref: './api/installer/8.0/panel-info.yaml'
+  /installer/8.0/auth:
+    $ref: './api/installer/8.0/auth/auth.yaml'
   /apptype:
     $ref: './api/apptype.yaml'
   /panel/login:

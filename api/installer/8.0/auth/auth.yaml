@@ -1,0 +1,181 @@
+post:
+  summary: Authenticate installer user
+  description: |
+    Authenticates the user with the Installer REST API and returns a User-Token used for subsequent requests.
+  tags:
+    - Installer:8.0:Auth
+  security: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+              format: email
+              description: Installer user email
+            password:
+              type: string
+              description: Installer user password
+            device_id:
+              type: string
+              description: Application/device identifier
+            device_info:
+              type: string
+              description: Device info string (e.g., model)
+          required: [email, password, device_id, device_info]
+        example:
+          email: "<email>"
+          password: "<password>"
+          device_id: "<device id>"
+          device_info: "IN2013"
+  responses:
+    '200':
+      description: Authentication succeeded
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              user_token:
+                type: string
+                description: Token to be supplied in User-Token header
+              info:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  phone:
+                    type: string
+              server:
+                type: object
+                properties:
+                  installer_allowed_to_remove_panels:
+                    type: boolean
+                  virtual_panel_support:
+                    type: boolean
+              license:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  hmac:
+                    type: string
+                  valid:
+                    type: object
+                    properties:
+                      not_after:
+                        type: string
+                      not_before:
+                        type: string
+                  features:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        allowed:
+                          type: boolean
+                        description:
+                          type: string
+                        feature:
+                          type: string
+                  limits:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        description:
+                          type: string
+                        limit:
+                          type: string
+                        value:
+                          type: number
+          example:
+            user_token: "2TBJomfS9M21Ubn07TNu222vTu5H9y12"
+            info:
+              name: "Connor"
+              email: "<Email>"
+              phone: "44777777777"
+            server:
+              installer_allowed_to_remove_panels: true
+              virtual_panel_support: false
+            license:
+              name: "Enterprise"
+              hmac: "RandomHMACLicense"
+              valid:
+                not_after: "2030-08-27T00:00:00+00:00"
+                not_before: "2024-09-22T00:00:00+00:00"
+              features:
+                - allowed: true
+                  description: ""
+                  feature: "interactive"
+                - allowed: true
+                  description: ""
+                  feature: "interactive/end_user_reporting"
+                - allowed: true
+                  description: ""
+                  feature: "interactive/installer_app"
+                - allowed: true
+                  description: ""
+                  feature: "interactive/user_app"
+                - allowed: true
+                  description: ""
+                  feature: "receiver"
+                - allowed: true
+                  description: ""
+                  feature: "receiver/central_stations"
+                - allowed: true
+                  description: ""
+                  feature: "receiver/receive_events"
+                - allowed: true
+                  description: ""
+                  feature: "resolve"
+                - allowed: true
+                  description: ""
+                  feature: "resolve/dls_api"
+                - allowed: true
+                  description: ""
+                  feature: "resolve/panel_configuration"
+                - allowed: true
+                  description: ""
+                  feature: "resolve/panel_diagnostic"
+                - allowed: true
+                  description: ""
+                  feature: "resolve/panel_event_log"
+                - allowed: true
+                  description: ""
+                  feature: "resolve/panel_labels"
+                - allowed: true
+                  description: ""
+                  feature: "resolve/panel_set_state"
+                - allowed: true
+                  description: ""
+                  feature: "resolve/remote_inspection"
+                - allowed: true
+                  description: ""
+                  feature: "resolve/reports"
+                - allowed: true
+                  description: ""
+                  feature: "resolve/software_upgrade"
+                - allowed: true
+                  description: ""
+                  feature: "resolve/virtual_keypad"
+              limits:
+                - description: "Automation Software connections"
+                  limit: "central_station_num"
+                  value: 100
+                - description: "PowerMaster/Max Systems"
+                  limit: "panels"
+                  value: 100000
+                - description: "PowerSeries Dual path Systems"
+                  limit: "panels_dual_path"
+                  value: 10000
+                - description: "PowerSeries NEO/PRO Systems"
+                  limit: "panels_neo"
+                  value: 100000
+    '401':
+      description: Authentication failed
