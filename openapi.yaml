@@ -117,6 +117,8 @@ paths:
     $ref: './api/version.yaml'
   /installer/8.0/upload_configuration:
     $ref: './api/installer/8.0/configuration/upload-configuration.yaml'
+  /installer/8.0/start_download_device_configuration:
+    $ref: './api/installer/8.0/configuration/start-download-device-configuration.yaml'
   /installer/8.0/feature_set:
     $ref: './api/installer/8.0/panel/feature-set.yaml'
   /installer/8.0/group/assign:

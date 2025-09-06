@@ -1,0 +1,47 @@
+post:
+  summary: Start Download Device Configuration
+  description: |
+    Starts the download of the configuration for a specific device. The download
+    process is asynchronous; use `/installer/8.0/process_status` (or the appropriate
+    process status endpoint) with the returned `process_token` to poll for status.
+  tags:
+    - Installer:8.0:Configuration
+  parameters:
+    - $ref: '../../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../../openapi.yaml#/components/parameters/SessionTokenHeader'
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            panel_serial:
+              type: string
+              description: Panel serial number
+            device_type:
+              type: string
+              description: Device type (e.g., POWER_LINK, ZONE, etc.)
+            zone:
+              type: integer
+              description: Zone number (if applicable)
+          required: [panel_serial, device_type, zone]
+        example:
+          panel_serial: "AAAAAA"
+          device_type: "POWER_LINK"
+          zone: 1
+  responses:
+    '200':
+      description: Download started; a process token is returned to track progress
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              process_token:
+                type: string
+                description: Keep this token to check the status of the download
+          example:
+            process_token: "1814fa15-d9a5-11ef-8676-06640ee4c3d2"
+    '401':
+      description: Unauthorized — missing or invalid User-Token
