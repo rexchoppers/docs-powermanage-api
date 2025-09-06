@@ -76,6 +76,10 @@ tags:
     description: |
       Installer 8.0 endpoints for retrieving panel configuration exports.
 
+  - name: Installer:8.0:WalkTest
+    description: |
+      Installer 8.0 endpoints related to starting, stopping and querying walk test status.
+
   - name: REST:Versions
   - name: Installer:Versions
 
@@ -167,6 +171,12 @@ paths:
     $ref: './api/rest/10.0/had/rules/event-profiles.yaml'
   /had/rules/restrictions:
     $ref: './api/rest/10.0/had/rules/restrictions.yaml'
+  /installer/8.0/start_walk_test:
+    $ref: './api/installer/8.0/walk-test/start-walk-test.yaml'
+  /installer/8.0/stop_walk_test:
+    $ref: './api/installer/8.0/walk-test/stop-walk-test.yaml'
+  /installer/8.0/walk_test_status:
+    $ref: './api/installer/8.0/walk-test/walk-test-status.yaml'
 
 components:
   securitySchemes:

@@ -1,0 +1,62 @@
+get:
+  summary: Walk Walk Test
+  description: |
+    Returns the information of the last walk test.
+  tags:
+    - Installer:8.0:WalkTest
+  parameters:
+    - $ref: '../../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../../openapi.yaml#/components/parameters/SessionTokenHeader'
+  responses:
+    '200':
+      description: Status entries of the last walk test
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                zone:
+                  type: integer
+                device_type:
+                  type: string
+                status:
+                  type: string
+                  enum: [passed, failed]
+          example:
+            - zone: 1
+              device_type: "ZONE"
+              status: "failed"
+            - zone: 2
+              device_type: "ZONE"
+              status: "passed"
+            - zone: 3
+              device_type: "ZONE"
+              status: "failed"
+            - zone: 4
+              device_type: "ZONE"
+              status: "failed"
+            - zone: 1
+              device_type: "KEYFOB"
+              status: "failed"
+            - zone: 2
+              device_type: "KEYFOB"
+              status: "failed"
+            - zone: 1
+              device_type: "WIRELESS_COMMANDER"
+              status: "failed"
+            - zone: 5
+              device_type: "ZONE"
+              status: "failed"
+            - zone: 6
+              device_type: "ZONE"
+              status: "failed"
+            - zone: 7
+              device_type: "ZONE"
+              status: "failed"
+            - zone: 8
+              device_type: "ZONE"
+              status: "failed"
+    '401':
+      description: Unauthorized — missing or invalid User-Token or Session-Token
