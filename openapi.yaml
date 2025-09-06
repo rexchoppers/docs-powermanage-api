@@ -127,6 +127,8 @@ paths:
     $ref: './api/installer/8.0/event/events.yaml'
   /installer/8.0/configuration:
     $ref: './api/installer/8.0/configuration/configuration.yaml'
+  /installer/8.0/configuration_list:
+    $ref: './api/installer/8.0/configuration/configuration-list.yaml'
   /apptype:
     $ref: './api/apptype.yaml'
   /panel/login:

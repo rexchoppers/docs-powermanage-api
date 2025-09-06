@@ -1,5 +1,5 @@
 get:
-  summary: List events
+  summary: Get Events
   description: |
     Returns a list of events that have occurred on the panel.
   tags:

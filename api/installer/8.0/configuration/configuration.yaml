@@ -1,5 +1,5 @@
 get:
-  summary: Get configuration
+  summary: Get Configuration
   description: |
     Returns the configuration for the specified panel.
   tags:
