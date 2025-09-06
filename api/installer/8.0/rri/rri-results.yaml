@@ -1,0 +1,100 @@
+get:
+  summary: Get Remote Inspection Results
+  description: |
+    Returns remote inspection results.
+  tags:
+    - Installer:8.0:RRI
+  parameters:
+    - $ref: '../../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../../openapi.yaml#/components/parameters/SessionTokenHeader'
+  responses:
+    '200':
+      description: RRI results
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              rri_timestamp:
+                type: string
+                description: Timestamp in 'YYYY-MM-DD HH:MM:SS' format
+              tests:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    test_type:
+                      type: integer
+                    state:
+                      type: string
+                      enum: [pass, fail, not_available]
+                    details:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          detail_name:
+                            type: string
+                          description:
+                            type: string
+                          timestamp:
+                            type: string
+          example:
+            rri_timestamp: "2025-01-23 15:43:21"
+            tests:
+              - test_type: 1
+                state: "fail"
+                details:
+                  - detail_name: "Control Panel Tamper"
+                    description: "Control Panel"
+                    timestamp: "2025-01-23 11:21:55"
+              - test_type: 2
+                state: "pass"
+                details:
+                  - detail_name: "Arm Away"
+                    description: "Keyfob 1"
+                    timestamp: "2025-01-21 14:58:34"
+              - test_type: 3
+                state: "pass"
+                details:
+                  - detail_name: ""
+                    description: ""
+                    timestamp: ""
+              - test_type: 4
+                state: "pass"
+                details:
+                  - detail_name: ""
+                    description: ""
+                    timestamp: ""
+              - test_type: 5
+                state: "pass"
+                details:
+                  - detail_name: ""
+                    description: ""
+                    timestamp: ""
+              - test_type: 6
+                state: "fail"
+                details:
+                  - detail_name: "120"
+                    description: "120"
+                    timestamp: "0000-00-00 00:00:00"
+              - test_type: 8
+                state: "not_available"
+                details:
+                  - detail_name: ""
+                    description: ""
+                    timestamp: ""
+              - test_type: 9
+                state: "pass"
+                details:
+                  - detail_name: ""
+                    description: ""
+                    timestamp: ""
+              - test_type: 10
+                state: "pass"
+                details:
+                  - detail_name: ""
+                    description: ""
+                    timestamp: ""
+    '401':
+      description: Unauthorized — missing or invalid User-Token

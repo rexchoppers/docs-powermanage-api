@@ -80,6 +80,10 @@ tags:
     description: |
       Installer 8.0 endpoints related to starting, stopping and querying walk test status.
 
+  - name: Installer:8.0:RRI
+    description: |
+      Installer 8.0 endpoints related to initiating remote inspection and retrieving its results.
+
   - name: REST:Versions
   - name: Installer:Versions
 
@@ -181,6 +185,10 @@ paths:
     $ref: './api/installer/8.0/walk-test/stop-walk-test.yaml'
   /installer/8.0/walk_test_status:
     $ref: './api/installer/8.0/walk-test/walk-test-status.yaml'
+  /installer/8.0/initiate_rri:
+    $ref: './api/installer/8.0/rri/initiate-rri.yaml'
+  /installer/8.0/rri_results:
+    $ref: './api/installer/8.0/rri/rri-results.yaml'
 
 components:
   securitySchemes:

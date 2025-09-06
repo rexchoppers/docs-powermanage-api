@@ -1,0 +1,32 @@
+post:
+  summary: Initiate Remote Inspection
+  description: |
+    Initiates a remote inspection process.
+  tags:
+    - Installer:8.0:RRI
+  parameters:
+    - $ref: '../../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../../openapi.yaml#/components/parameters/SessionTokenHeader'
+  requestBody:
+    required: false
+    content:
+      application/json:
+        schema:
+          type: object
+          description: Empty object
+        example: {}
+  responses:
+    '200':
+      description: Remote inspection initiated; a process token is returned to track status
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              process_token:
+                type: string
+                description: Keep this token to check the status of the download
+          example:
+            process_token: "1814fa15-d9a5-11ef-8676-06640ee4c3d2"
+    '401':
+      description: Unauthorized — missing or invalid User-Token
