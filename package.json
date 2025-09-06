@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "nodemon --watch openapi.yaml --watch api/ --ext yaml,yml dev.js"
   },
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "author": "Rexchoppers",
+  "license": "MIT",
+  "description": "Documentation for the Visonic/Tyco/JC PowerManage API",
   "dependencies": {
     "@redocly/cli": "^2.0.8",
     "nodemon": "^3.1.10"
