@@ -69,6 +69,10 @@ tags:
     description: |
       Installer 8.0 endpoints related to user listing and management for a panel.
 
+  - name: Installer:8.0:Event
+    description: |
+      Installer 8.0 endpoints related to panel event history.
+
   - name: REST:Versions
   - name: Installer:Versions
 
@@ -116,6 +120,8 @@ paths:
     $ref: './api/installer/8.0/auth/auth.yaml'
   /installer/8.0/users:
     $ref: './api/installer/8.0/user/users.yaml'
+  /installer/8.0/events:
+    $ref: './api/installer/8.0/event/events.yaml'
   /apptype:
     $ref: './api/apptype.yaml'
   /panel/login:

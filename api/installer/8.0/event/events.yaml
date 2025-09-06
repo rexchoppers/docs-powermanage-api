@@ -1,0 +1,97 @@
+get:
+  summary: List events
+  description: |
+    Returns a list of events that have occurred on the panel.
+  tags:
+    - Installer:8.0:Event
+  parameters:
+    - $ref: '../../../../openapi.yaml#/components/parameters/UserTokenHeader'
+    - $ref: '../../../../openapi.yaml#/components/parameters/SessionTokenHeader'
+  responses:
+    '200':
+      description: A list of events from the panel
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                event:
+                  type: integer
+                type_id:
+                  type: integer
+                label:
+                  type: string
+                description:
+                  type: string
+                appointment:
+                  type: string
+                datetime:
+                  type: string
+                  description: Event timestamp in 'YYYY-MM-DD HH:MM:SS' format
+                video:
+                  type: boolean
+                device_type:
+                  type: string
+                zone:
+                  nullable: true
+                  oneOf:
+                    - type: integer
+                    - type: 'null'
+                partitions:
+                  type: array
+                  items:
+                    type: integer
+                name:
+                  type: string
+                delivery:
+                  type: object
+                  properties:
+                    queue:
+                      type: integer
+                    success:
+                      type: integer
+                    failed:
+                      type: integer
+                    retry:
+                      type: integer
+                    processing:
+                      type: integer
+          example:
+            - event: 0
+              type_id: 31
+              label: "NONE"
+              description: "Cancel Alarm"
+              appointment: "Joe Bloggs"
+              datetime: "2025-01-23 13:09:44"
+              video: false
+              device_type: "USER"
+              zone: 1
+              partitions: [1]
+              name: ""
+              delivery:
+                queue: 0
+                success: 0
+                failed: 0
+                retry: 0
+                processing: 0
+            - event: 0
+              type_id: 27
+              label: "BURGLER"
+              description: "Control Panel Tamper Restore"
+              appointment: "Control Panel"
+              datetime: "2025-01-23 13:24:26"
+              video: false
+              device_type: "CONTROL_PANEL"
+              zone: 0
+              partitions: [1]
+              name: ""
+              delivery:
+                queue: 0
+                success: 0
+                failed: 0
+                retry: 0
+                processing: 0
+    '401':
+      description: Unauthorized — missing or invalid User-Token or Session-Token
